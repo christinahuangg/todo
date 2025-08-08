@@ -13,10 +13,12 @@ struct ContentView: View
     @State private var showNewTask = false
     @Query var toDos: [ToDoItem]
     @Environment(\.modelContext) var modelContext
+    @State private var selectedDate = Date()
     
     
     var body: some View
     {
+        
         VStack
         {
             HStack
@@ -47,9 +49,13 @@ struct ContentView: View
             {
                 ForEach (toDos)
                 { toDoItem in
-                    if toDoItem.isImportant {
+                    if toDoItem.isImportant
+                    {
                         Text("‼️" + toDoItem.title)
-                    } else {
+                    }
+                    
+                    else
+                    {
                         Text(toDoItem.title)
                     }
                 }

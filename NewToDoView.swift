@@ -13,6 +13,7 @@ struct NewToDoView: View
     @Bindable var toDoItem: ToDoItem
     @Environment(\.modelContext) var modelContext
     @Binding var showNewTask: Bool
+    @State private var selectedDate = Date()
     
     var body: some View
     {
@@ -23,6 +24,10 @@ struct NewToDoView: View
             Toggle(isOn: $toDoItem.isImportant) {
                 Text("Is this important? ")
             }
+    
+            DatePicker("Due Date", selection: $selectedDate, displayedComponents: .date)
+
+
             
             Button
             {
